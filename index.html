@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Преміум Натяжні Стелі</title>
+    <!-- Підключення сучасного шрифту -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2c2c2c;
+            --accent: #ff8c00; /* Оранжевий акцент для привернення уваги */
+            --accent-hover: #e67e00;
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #fff;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--primary);
+            padding: 20px 5% ;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .logo { 
+            font-size: 26px; 
+            font-weight: 800; 
+            color: var(--text-light); 
+            letter-spacing: 1px;
+        }
+        .logo span { color: var(--accent); }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent), #ff5722);
+            color: var(--text-light);
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(to right, rgba(26,26,26,0.9), rgba(26,26,26,0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            color: var(--text-light);
+        }
+
+        .hero-content {
+            max-width: 600px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero h1 { 
+            font-size: 52px; 
+            line-height: 1.2;
+            margin-bottom: 20px; 
+        }
+
+        .hero p { 
+            font-size: 20px; 
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+
+        /* --- SERVICES --- */
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin: 80px 0 40px;
+            color: var(--primary);
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--accent);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 { 
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* --- CALCULATOR SECTION --- */
+        .calculator-section {
+            background-color: #fff;
+            padding: 80px 5%;
+            margin-top: 80px;
+        }
+
+        .calc-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+
+        .calc-group {
+            margin-bottom: 25px;
+        }
+
+        .calc-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .calc-group input[type="number"],
+        .calc-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .calc-group input:focus, .calc-group select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
+        }
+
+        .calc-result {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .calc-result h3 { font-size: 20px; font-weight: 400; margin-bottom: 10px; }
+        .calc-result .price { font-size: 38px; font-weight: 800; color: var(--accent); }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 80px 5%;
+        }
+
+        .contact-section p { margin-bottom: 30px; opacity: 0.8; }
+
+        form {
+            max-width: 450px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        form input {
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            header { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Svitlo<span>Steli</span></div>
+        <a href="#calculator" class="btn">Розрахувати вартість</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Ексклюзивні натяжні стелі нового покоління від Короля</h1>
+            <p>Тіньові профілі, світлові лінії та трекові системи. Створюємо ідеальну геометрію та правильне освітлення у вашому домі.</p>
+            <a href="#contact" class="btn">Викликати технолога (Безкоштовно)</a>
+        </div>
+    </section>
+
+    <h2 class="section-title">Наші найпопулярніші рішення</h2>
+    <section class="services">
+        <div class="service-card">
+            <h3>Тіньовий профіль</h3>
+            <p>Елегантний зазор між стіною та стелею. Створює ефект стелі, що ширяє у повітрі. Ніяких гумових заглушок та плінтусів.</p>
+        </div>
+        <div class="service-card">
+            <h3>Світлові лінії</h3>
+            <p>Основне або декоративне освітлення, вбудоване в рівень зі стелею. Сучасна та мінімалістична альтернатива люстрам.</p>
+        </div>
+        <div class="service-card">
+            <h3>Трекові системи</h3>
+            <p>Магнітні треки, повністю інтегровані в натяжну стелю. Дозволяють легко змінювати розташування світильників.</p>
+        </div>
+    </section>
+
+    <section id="calculator" class="calculator-section">
+        <h2 class="section-title">Онлайн калькулятор вартості</h2>
+        <div class="calc-container">
+            <div class="calc-group">
+                <label for="area">Площа приміщення (м²):</label>
+                <input type="number" id="area" value="15" min="1" oninput="calculate()">
+            </div>
+            
+            <div class="calc-group">
+                <label for="type">Тип стелі та профілю:</label>
+                <select id="type" onchange="calculate()">
+                    <option value="250">Стандарт (Матова/Глянцева) - від 250 грн/м²</option>
+                    <option value="450">Тіньовий шов (EuroKRAAB) - від 450 грн/м²</option>
+                    <option value="600">Паряща стеля (з підсвіткою) - від 600 грн/м²</option>
+                </select>
+            </div>
+
+            <div class="calc-group">
+                <label for="corners">Кількість кутів:</label>
+                <input type="number" id="corners" value="4" min="4" oninput="calculate()">
+            </div>
+
+            <div class="calc-group">
+                <label for="lights">Кількість точкових світильників (шт):</label>
+                <input type="number" id="lights" value="0" min="0" oninput="calculate()">
+            </div>
+
+            <div class="calc-result">
+                <h3>Орієнтовна вартість:</h3>
+                <div class="price"><span id="totalPrice">3750</span> ₴</div>
+                <p style="font-size: 12px; margin-top: 10px; opacity: 0.7;">*Ціна є орієнтовною. Точна вартість розраховується після заміру.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Бажаєте дізнатися точну вартість?</h2>
+        <p>Залиште заявку, і ми зробимо безкоштовний 3D-проект та точний прорахунок.</p>
+        <form>
+            <input type="text" placeholder="Ваше ім'я" required>
+            <input type="tel" placeholder="+38 (000) 000-00-00" required>
+            <button type="submit" class="btn" style="width: 100%;">Замовити дзвінок</button>
+        </form>
+    </section>
+
+    <!-- Скрипт для роботи калькулятора -->
+    <script>
+        function calculate() {
+            // Отримуємо значення з полів
+            let area = parseFloat(document.getElementById('area').value) || 0;
+            let typePrice = parseFloat(document.getElementById('type').value);
+            let corners = parseInt(document.getElementById('corners').value) || 0;
+            let lights = parseInt(document.getElementById('lights').value) || 0;
+
+            // Базові тарифи для додаткових робіт (можеш змінити під свої ціни)
+            let extraCornerPrice = 50; // Ціна за додатковий кут (перші 4 зазвичай безкоштовно)
+            let lightPrice = 150; // Ціна за монтаж 1 світильника
+
+            // Логіка розрахунку
+            let baseCost = area * typePrice;
+            
+            // Рахуємо тільки додаткові кути (більше 4-х)
+            let cornersCost = (corners > 4) ? (corners - 4) * extraCornerPrice : 0;
+            
+            let lightsCost = lights * lightPrice;
+
+            // Загальна сума
+            let total = baseCost + cornersCost + lightsCost;
+
+            // Анімація зміни цифр (додатковий ефект)
+            let displayElement = document.getElementById('totalPrice');
+            displayElement.innerText = total.toLocaleString('uk-UA');
+        }
+
+        // Викликаємо функцію при завантаженні, щоб одразу показати ціну за замовчуванням
+        window.onload = calculate;
+    </script>
+</body>
+</html>
