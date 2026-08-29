@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфоліо: Тіньовий профіль | Преміум Натяжні Стелі</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #121212;
+            --secondary: #1e1e1e;
+            --accent: #d4af37; /* Преміальний золотий */
+            --accent-hover: #b5952f;
+            --bg-color: #0a0a0a;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-radius: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .logo { 
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #000;
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- PORTFOLIO HEADER --- */
+        .portfolio-header {
+            padding: 150px 5% 60px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(18,18,18,1) 0%, rgba(10,10,10,1) 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .portfolio-header h1 {
+            font-size: 42px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .portfolio-header h1 span {
+            color: var(--accent);
+        }
+
+        .portfolio-header p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-section {
+            padding: 60px 5% 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            background: var(--secondary);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+            cursor: pointer; /* Показує, що на картинку можна натиснути */
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            background-color: var(--primary);
+            text-align: center;
+            padding: 100px 5%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .contact-section h2 { margin-bottom: 15px; font-size: 32px; color: var(--text-main); }
+        .contact-section p { margin-bottom: 40px; color: var(--text-muted); }
+
+        form {
+            max-width: 450px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        form input {
+            padding: 18px 20px;
+            background: var(--bg-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: var(--transition);
+        }
+        
+        form input:focus {
+            border-color: var(--accent);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .back-link:hover {
+            color: var(--text-main);
+        }
+
+        /* --- MODAL (LIGHTBOX) STYLES --- */
+        .modal {
+            display: none; /* Приховано за замовчуванням */
+            position: fixed;
+            z-index: 2000; /* Поверх усього */
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9); /* Темний фон */
+            backdrop-filter: blur(8px); /* Розмиття заднього фону */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            object-fit: contain;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: var(--text-main);
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover, .close-modal:focus {
+            color: var(--accent);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-header h1 { font-size: 32px; }
+            header { flex-direction: column; gap: 15px; padding: 15px; position: relative; }
+            .portfolio-header { padding-top: 60px; }
+            .gallery-item img { height: 400px; }
+            .close-modal { right: 20px; top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка з посиланням на головну сторінку -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="img/logoclear.png" alt="Нова Стеля Вінниця" class="logo-img" width="150" height="45">
+        </a>
+        <a href="index.html#calculator" class="btn">Розрахувати вартість</a>
+    </header>
+
+    <!-- Заголовок портфоліо -->
+    <section class="portfolio-header">
+        <h1>Наші роботи: <span>Світловілінії</span></h1>
+        
+    </section>
+
+    <!-- Галерея виконаних робіт -->
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="img/lightlines/photo_1_2026-08-29_18-12-26.jpg" alt="Тіньовий шов з дерев'яними меблями">
+            </div>
+            <div class="gallery-item">
+                <img src="img/lightlines/photo_2_2026-08-29_18-12-26.jpg" alt="Тіньовий шов на куті">
+            </div>
+            <div class="gallery-item">
+                <img src="img/lightlines/photo_3_2026-08-29_18-12-26.jpg" alt="Тіньовий шов біля сірої шафи">
+            </div>
+             <div class="gallery-item">
+                <img src="img/lightlines/photo_4_2026-08-29_18-12-26.jpg" alt="Тіньовий шов деталі">
+            </div>
+             <div class="gallery-item">
+                <img src="img/lightlines/photo_5_2026-08-29_18-12-26.jpg" alt="Тіньовий шов в інтер'єрі">
+            </div>
+             <div class="gallery-item">
+                <img src="img/lightlines/photo_6_2026-08-29_18-12-26.jpg" alt="Тіньовий шов ракурс">
+            </div>
+             <div class="gallery-item">
+                <img src="img/lightlines/photo_7_2026-08-29_18-12-26.jpg" alt="Тіньовий шов загальний вигляд">
+            </div>
+            <div class="gallery-item">
+                <img src="img/lightlines/photo_8_2026-08-29_18-12-26.jpg" alt="Тіньовий шов в інтер'єрі">
+            </div>
+             <div class="gallery-item">
+                <img src="img/lightlines/photo_9_2026-08-29_18-12-26.jpg" alt="Тіньовий шов ракурс">
+            </div>
+             <div class="gallery-item">
+                <img src="img/lightlines/photo_10_2026-08-29_18-12-26.jpg" alt="Тіньовий шов загальний вигляд">
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">← Повернутися на головну сторінку</a>
+        </div>
+    </section>
+
+    <!-- Блок для захоплення клієнтів -->
+    <section id="contact" class="contact-section">
+        <h2>Сподобався результат?</h2>
+        <p>Залиште заявку, і ми реалізуємо такий самий тіньовий профіль у вашому домі.</p>
+        <form>
+            <input type="text" placeholder="Ваше ім'я" required>
+            <input type="tel" placeholder="+38 (000) 000-00-00" required>
+            <button type="submit" class="btn" style="width: 100%;">Замовити дзвінок</button>
+        </form>
+    </section>
+
+    <!-- HTML для модального вікна (повноекранний перегляд фото) -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <!-- Скрипт для роботи галереї -->
+    <script>
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        const images = document.querySelectorAll(".gallery-item img");
+        const closeModalBtn = document.querySelector(".close-modal");
+
+        // Відкриваємо модальне вікно при кліку на будь-яку картинку
+        images.forEach(img => {
+            img.addEventListener("click", function() {
+                modal.style.display = "block";
+                modalImg.src = this.src; // Підставляємо джерело натиснутої картинки
+            });
+        });
+
+        // Закриваємо при кліку на хрестик
+        closeModalBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        // Закриваємо при кліку будь-де на темному фоні навколо фотографії
+        modal.addEventListener("click", function(event) {
+            if (event.target !== modalImg) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
