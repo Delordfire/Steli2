@@ -34,34 +34,39 @@
 
         /* --- HEADER --- */
         header {
-    background-color: rgba(18, 18, 18, 0.85);
-    backdrop-filter: blur(10px);
-    padding: 20px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute; /* <-- Змінено цей рядок */
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-}
-        
-        .logo { 
-            font-size: 26px; 
-            font-weight: 800; 
-            color: var(--text-main); 
-            letter-spacing: 1px;
+            background-color: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
         
-        .logo span { color: var(--accent); }
+        .logo { 
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
 
         .btn {
-            display: inline-block; /* Додано: забороняє накладання при переносі тексту */
-            line-height: 1.4;      /* Додано: робить міжрядковий інтервал адекватним */
+            display: inline-block;
+            line-height: 1.4;
             background: var(--accent);
             color: #000;
             padding: 14px 30px;
@@ -134,10 +139,9 @@
             margin: 0 auto;
         }
 
-        /* Змінено стилі, щоб картка працювала як посилання */
         .service-card {
-            display: block; /* Посилання за замовчуванням рядкове, робимо блочним */
-            text-decoration: none; /* Прибираємо підкреслення тексту */
+            display: block;
+            text-decoration: none;
             background: rgba(30, 30, 30, 0.6);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -277,17 +281,19 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 32px; }
             header { flex-direction: column; gap: 15px; padding: 15px; position: absolute; }
-            
-            /* --- Додай цей блок, щоб зсунути текст вниз --- */
-            .hero {
-                padding-top: 180px; 
-            }
-            /* ----------------------------------------------- */
-
+            .hero { padding-top: 160px; }
             .portfolio-header { padding-top: 60px; }
             .gallery-item img { height: 400px; }
             
-            /* Далі йдуть інші стилі для кнопок, які ми додали раніше... */
+            .btn {
+                font-size: 14px;
+                padding: 12px 20px;
+                text-align: center;
+            }
+            .hero .btn {
+                display: block; 
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -295,7 +301,7 @@
 
     <header>
         <a href="#" class="logo">
-            <img src="img/logoclear.png" alt="Нова Стеля Вінниця" class="logo-img" width="150" height="150" viewBox="0 0 24 24">
+            <img src="img/logoclear.png" alt="Нова Стеля Вінниця" class="logo-img" width="150" height="45">
         </a>
         <a href="#calculator" class="btn">Розрахувати вартість</a>
     </header>
@@ -310,7 +316,6 @@
 
     <h2 class="section-title">Наші найпопулярніші рішення</h2>
     <section class="services">
-        <!-- Зверни увагу: href вказує на посилання, куди перейде користувач. target="_blank" відкриває в новій вкладці -->
         <a href="portfolio-shadow.html" target="_blank" class="service-card">
             <h3>Тіньовий профіль</h3>
             <p>Елегантний зазор між стіною та стелею. Створює ефект стелі, що ширяє у повітрі. Ніяких гумових заглушок та плінтусів.</p>
@@ -323,7 +328,6 @@
             <h3>Трекові системи</h3>
             <p>Магнітні треки, повністю інтегровані в натяжну стелю. Дозволяють легко змінювати розташування світильників.</p>
         </a>
-        <!-- Додано нову картку -->
         <a href="portfolio-cornice.html" target="_blank" class="service-card">
             <h3>Приховані карнизи</h3>
             <p>Естетичне рішення для штор, інтегроване безпосередньо в натяжну стелю. Створює ефект спадаючої тканини з нізвідки.</p>
@@ -339,11 +343,9 @@
             </div>
             
             <div class="calc-group">
-                <label for="type">Тип стелі та профілю:</label>
+                <label for="type">Тип стелі:</label>
                 <select id="type" onchange="calculate()">
-                    <option value="250">Стандарт (Матова/Глянцева) - від 250 грн/м²</option>
-                    <option value="450">Тіньовий шов (EuroKRAAB) - від 450 грн/м²</option>
-                    <option value="600">Паряща стеля (з підсвіткою) - від 600 грн/м²</option>
+                    <option value="320">Матова / Глянцева (320 грн/м²)</option>
                 </select>
             </div>
 
@@ -359,7 +361,7 @@
 
             <div class="calc-result">
                 <h3>Орієнтовна вартість:</h3>
-                <div class="price"><span id="totalPrice">3750</span> ₴</div>
+                <div class="price"><span id="totalPrice">4800</span> ₴</div>
                 <p style="font-size: 13px; margin-top: 15px; color: var(--text-muted);">*Ціна є орієнтовною. Точна вартість розраховується після заміру.</p>
             </div>
         </div>
@@ -378,25 +380,21 @@
     <!-- Скрипт для роботи калькулятора -->
     <script>
         function calculate() {
-            // Отримуємо значення з полів
             let area = parseFloat(document.getElementById('area').value) || 0;
             let typePrice = parseFloat(document.getElementById('type').value);
             let corners = parseInt(document.getElementById('corners').value) || 0;
             let lights = parseInt(document.getElementById('lights').value) || 0;
 
-            // Базові тарифи для додаткових робіт
-            let extraCornerPrice = 50; 
-            let lightPrice = 150; 
+            // Оновлені ціни за кути та світильники
+            let extraCornerPrice = 20; // 20 грн за додатковий кут (після перших 4)
+            let lightPrice = 250;      // 250 грн за 1 світильник
 
-            // Логіка розрахунку
             let baseCost = area * typePrice;
             let cornersCost = (corners > 4) ? (corners - 4) * extraCornerPrice : 0;
             let lightsCost = lights * lightPrice;
 
-            // Загальна сума
             let total = baseCost + cornersCost + lightsCost;
 
-            // Виведення
             let displayElement = document.getElementById('totalPrice');
             displayElement.innerText = total.toLocaleString('uk-UA');
         }
